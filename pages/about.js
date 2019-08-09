@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
+import fetch from "isomorphic-unfetch";
 import OwlCarousel from "react-owl-carousel2";
 import { Controller, Scene } from "react-scrollmagic";
 import ReactVivus from "react-vivus";
@@ -48,16 +49,26 @@ class About extends Component {
     });
   }
 
+  static async getInitialProps() {
+    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${6}`);
+    const page = await res1.json();
+    const res2 = await fetch(`http://192.168.1.76:8080/api/service`);
+    const services = await res2.json();
+    const res3 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const setting = await res3.json();
+    return { page: page[0], services, setting };
+  }
+
   render() {
-    const { router } = this.props;
+    const { router, setting, page } = this.props;
     return (
       <div className="about-page">
-        <Head title={"Techravity - About"} />
+        <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        <div className="banner-container">
+        <div className="banner-container" style={{ backgroundImage: `url(	http://192.168.1.76:8080${page.coverImage})` }}>
           <div className="content container">
-            <h1>Welcome to Techravity</h1>
-            <p>Everything That Now Exists Was Once Imagined</p>
+            <h1>{page.slogan}</h1>
+            <p>{page.description}</p>
           </div>
         </div>
         <div className="introduction-1 container">
@@ -79,14 +90,7 @@ class About extends Component {
               </Scene>
             </Controller>
           </div>
-          <div className="content">
-            <h2>About Us</h2>
-            <h4>Complexity motivates us</h4>
-            <p>
-              We love to solve complex problems. Our clients never worry because of our careful engineering who turn your dreams on design and high functionality into digital
-              reality.
-            </p>
-          </div>
+          <div className="content" dangerouslySetInnerHTML={{ __html: page.body }} />
         </div>
         <div className="introduction-2">
           <div className="container">
@@ -105,19 +109,19 @@ class About extends Component {
                   <div className="item-container">
                     <div className="item">
                       <img src="/static/images/about/icon/1-01.svg" />
-                      <h4>Your Idea</h4>
+                      <h4>Your idea</h4>
                     </div>
                     <div className="item">
                       <img src="/static/images/about/icon/1-02.svg" />
-                      <h4>Gathering Data</h4>
+                      <h4>Gathering data</h4>
                     </div>
                     <div className="item">
                       <img src="/static/images/about/icon/1-03.svg" />
-                      <h4>Build a structure base on your needs</h4>
+                      <h4>Building a structure based on your needs</h4>
                     </div>
                     <div className="item">
                       <img src="/static/images/about/icon/1-04.svg" />
-                      <h4>project estimation cost with our suggestion</h4>
+                      <h4>Project estimation</h4>
                     </div>
                   </div>
                 </div>
@@ -155,8 +159,8 @@ class About extends Component {
                   </div>
                 </div>
                 <p>
-                  We believe Eye Catching design result in stunning product. It does not matter how many iterations your Design needed, The out come is what have value for us. At
-                  the end of this step our designs and documents would be ready for your approval, after that the real development work will begin.
+                  We believe that eye catching design results in a stunning product. It does not matter how many iterations your design need, the outcome is what have value for us.
+                  At the end of this step our designs and documents will be ready for your approval, after that the real development will begin.
                 </p>
               </div>
               <div className="content">
@@ -185,11 +189,11 @@ class About extends Component {
                   </div>
                 </div>
                 <p>
-                  Here’s where the dream comes true!
-                  <br /> Expert developers work on your project with the most advanced tools. A dedicated product manager focuses on your production process, while the rest of the
-                  team ensure your code is the best possible quality. You are a part of the process at every step. Clear communication every day and weekly meetings according to
-                  the project timeline already established. We will make sure everything goes according to plan and just how you want it. We deliver your product as you desirable,
-                  smooth, safe and fast.
+                  Here's where the dream comes true! <br />
+                  Expert developers work on your project with the most advanced tools. A dedicated product manager focuses on your production process, while the rest of the team
+                  ensure your code is the best possible quality. You are a part of the process at every step. Clear communication every day and weekly meetings according to the
+                  project timeline already established. We will make sure everything goes according to plan and just how you want it. We deliver your product as you desire, smooth,
+                  safe and fast.
                 </p>
               </div>
               <div className="content">
@@ -210,8 +214,8 @@ class About extends Component {
                   </div>
                 </div>
                 <p>
-                  All the prior steps were just the beginning. A fast, safe and smooth product with stunning design is nothing without technical support 24/7. Regardless of time
-                  and day, we oversee the product with our dedicated support team. If you need additional features or fixing functionalities, just contact us at{" "}
+                  The prior steps were just the beginning. A fast, safe and smooth product with stunning design is nothing without technical support 24/7. Regardless of time and
+                  day, we oversee the product with our dedicated support team. If you need additional features or fixing functionalities, just contact us at{" "}
                   <a href="/">Techravity.</a>
                 </p>
               </div>
@@ -230,7 +234,7 @@ class About extends Component {
             <h2 style={{ marginTop: "50px" }}>Our mentality</h2>
             <div className="content">
               <p>
-                First work then reward ! Customer satisfaction is at the center of all our activities. We are confident of our performance to a level that we are willing to provide
+                First work, then reward! Customer satisfaction is at the center of all our activities. We are confident of our performance to a level that we are willing to provide
                 you with a trial round of sample work to prove our punctuality and quality of work before we expect any compensation.
               </p>
             </div>
@@ -573,18 +577,16 @@ class About extends Component {
           <div className="container">
             <h2>Work with us</h2>
             <p>
-              Looking for a highly motivated work area? Work with full potential?
-              <br />
-              Have a sit among us. We always looking forward to hire a highly experienced and motivated
-              <br />
-              developer in order to expand our business around the globe. Make sure to contact us.
+              Looking for a highly motivating workplace? A job with potential? Have a sit down with us.
+              <br /> We are always looking to hire a highly experienced and motivated developer in order to
+              <br /> expand our business around the globe. Make sure to contact us!
             </p>
             <a href="contactus.html" className="btn">
               Contact us
             </a>
           </div>
         </div>
-        <Footer router={router} />
+        <Footer router={router} setting={setting} />
         <ScriptLoader />
       </div>
     );

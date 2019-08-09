@@ -1,16 +1,16 @@
 import Head from "next/head";
 
-function GlobarHeader({ title }) {
+function GlobarHeader({ title, setting }) {
   return (
     <Head>
       <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <meta name="google" value="notranslate" />
       <meta name="referrer" content="no-referrer-when-downgrade" />
       <meta name="HandheldFriendly" content="True" />
       <meta name="MobileOptimized" content="320" />
-      <meta name="description" content="" />
+      <meta name="description" content={setting.description} />
       <meta name="google-site-verification" content="ondKXwN1V4cD1XRX46GXhnTHzbqTvvl6w59XgyCBmhM" />
       <link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicon/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicon/apple-icon-60x60.png" />

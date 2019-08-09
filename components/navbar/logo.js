@@ -1,4 +1,4 @@
-function Logo() {
+function Logo(source) {
   return (
     <div className="logo-container">
       <span className="dot" />

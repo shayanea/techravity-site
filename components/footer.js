@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Logo from "../components/navbar/logo";
 
-function Footer({ router }) {
+function Footer({ router, setting }) {
   const year = new Date().getFullYear();
   return (
     <footer>
@@ -54,6 +54,16 @@ function Footer({ router }) {
                 <a target="_blank" />
               </Link>
             </li>
+            <li>
+              <Link href="https://www.behance.net/techravity/">
+                <a target="_blank" />
+              </Link>
+            </li>
+            <li>
+              <Link href="https://dribbble.com/Techravity">
+                <a target="_blank" />
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="items">
@@ -62,7 +72,7 @@ function Footer({ router }) {
               <Logo />
             </a>
           </Link>
-          <p>Techravity is a dedicated group of professionals who strive to deliver your tailor-made software solutions based on the best technological practices.</p>
+          <p>{setting.description}</p>
           <p>
             <span>Tel:</span>
             <a href="tel:+46735859836">+46 735 859 836</a>
@@ -86,9 +96,7 @@ function Footer({ router }) {
       </div>
       <div className="copyright">
         <div className="container">
-          <p>
-            @ <span>{year}</span> Techravity - IT Solution Company
-          </p>
+          <p>{setting.copyRight}</p>
         </div>
       </div>
     </footer>

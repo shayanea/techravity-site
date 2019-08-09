@@ -23,7 +23,8 @@
 								d="M246.935,267.412
 						 c0,2.169-1.775,3.944-3.944,3.944h-82.334c-2.169,0-3.944-1.775-3.944-3.944V240c0-2.169,1.775-3.944,3.944-3.944h82.334
 						 c2.169,0,3.944,1.775,3.944,3.944v7.79h11.734l-11.734,11.734V267.412z"
-								style={{ strokeDasharray: " 261, 263", strokeDashoffset: 0 }}
+						 strokeDasharray="261, 263"
+						 strokeDashoffset="0"
 							/>
 						</g>
 						<path
@@ -33,7 +34,7 @@
 							strokeLinejoin="round"
 							strokeMiterlimit="10"
 							d="M199.901,253.706L203.846,253.706"
-							style={{ strokeDasharray: " 4, 6", strokeDashoffset: 0 }}
+							style={{ strokeDasharray: "4, 6", strokeDashoffset: 0 }}
 						/>
 						<path
 							fill="none"
@@ -42,7 +43,7 @@
 							strokeLinejoin="round"
 							strokeMiterlimit="10"
 							d="M207.79,253.706L211.734,253.706"
-							style={{ strokeDasharray: " 4, 6", strokeDashoffset: 0 }}
+							style={{ strokeDasharray: "4, 6", strokeDashoffset: 0 }}
 						/>
 						<path
 							fill="none"
@@ -51,7 +52,7 @@
 							strokeLinejoin="round"
 							strokeMiterlimit="10"
 							d="M192.112,253.706L196.056,253.706"
-							style={{ strokeDasharray: " 4, 6", strokeDashoffset: 0 }}
+							style={{ strokeDasharray: "4, 6", strokeDashoffset: 0 }}
 						/>
 					</g>
 					<g>
@@ -147,7 +148,7 @@
 					strokeWidth="2"
 					strokeMiterlimit="10"
 					d="M405.883,378.439L402.827,378.439"
-					style={{ strokeDasharray: " 4, 6", strokeDashoffset: 0 }}
+					style={{ strokeDasharray: "4, 6", strokeDashoffset: 0 }}
 				/>
 				<path
 					fill="none"
@@ -155,7 +156,7 @@
 					strokeWidth="2"
 					strokeMiterlimit="10"
 					d="M399.869,378.439L396.812,378.439"
-					style={{ strokeDasharray: " 4, 6", strokeDashoffset: 0 }}
+					style={{ strokeDasharray: "4, 6", strokeDashoffset: 0 }}
 				/>
 				<path
 					fill="none"
@@ -163,7 +164,7 @@
 					strokeWidth="2"
 					strokeMiterlimit="10"
 					d="M411.898,378.439L408.94,378.439"
-					style={{ strokeDasharray: " 3, 5", strokeDashoffset: 0 }}
+					style={{ strokeDasharray: "3, 5", strokeDashoffset: 0 }}
 				/>
 				<path
 					fill="none"
@@ -171,7 +172,7 @@
 					strokeWidth="2"
 					strokeMiterlimit="10"
 					d="M418.012,378.439L414.955,378.439"
-					style={{ strokeDasharray: " 4, 6", strokeDashoffset: 0 }}
+					style={{ strokeDasharray: "4, 6", strokeDashoffset: 0 }}
 				/>
 				<path
 					fill="none"

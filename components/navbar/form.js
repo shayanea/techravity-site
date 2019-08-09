@@ -23,7 +23,6 @@ class Form extends Component {
   };
 
   submit = e => {
-    let self = this;
     e.preventDefault();
     this.setState({ hasSubmited: true });
     if (
@@ -31,7 +30,7 @@ class Form extends Component {
       this.state.description.trim() !== "",
       this.state.staff.trim() !== "" && this.validateEmail(this.state.email) && this.validateTel(this.state.tel))
     ) {
-      fetch("https://techravity.herokuapp.com/api/Site/SendQuote", {
+      fetch("http://192.168.1.76:8080/api/freeQuote", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -39,27 +38,20 @@ class Form extends Component {
         },
         body: JSON.stringify({
           name: this.state.name,
-          email: this.state.email,
+          companyEmail: this.state.email,
           phone: this.state.tel,
           role: this.state.role,
           size: Number(this.state.staff),
-          description: this.state.description
+          detail: this.state.description
         })
-      })
-        .then(function(res) {
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw new Error("Something went wrong");
-          }
-        })
-        .then(function(data) {
-          cogoToast.success("Thank you! Your message has been sent successfully.");
-          self.setState({ hasSubmited: false, name: "", email: "", role: "", staff: "", tel: "", description: "" });
-        })
-        .catch(err => {
-          cogoToast.error("Something went wrong");
-        });
+      }).then(function(res) {
+        if (res.ok) {
+          this.form.reset();
+          return cogoToast.success("Thank you! Your message has been sent successfully.");
+        } else {
+          return cogoToast.error("Something went wrong");
+        }
+      });
     }
   };
 
@@ -71,7 +63,7 @@ class Form extends Component {
         <div className="container">
           <h2>tell us about your project</h2>
           <div className="close-btn" onClick={this.props.onHideForm} />
-          <form noValidate onSubmit={this.submit}>
+          <form ref={ref => (this.form = ref)} noValidate onSubmit={this.submit}>
             <div className="row">
               <div className="form-group">
                 <input
@@ -114,13 +106,13 @@ class Form extends Component {
                 <select
                   defaultValue=""
                   className="form-control"
-                  placeholder="Size of the company"
+                  placeholder="Company size"
                   onChange={e => this.setState({ staff: e.target.value })}
                   style={{
                     border: hasSubmited && staff.trim() === "" ? "1px solid red" : "1px solid #eee"
                   }}
                 >
-                  <option value="">Size of the company</option>
+                  <option value="">Company size</option>
                   <option value="1">1-9 employees</option>
                   <option value="2">10-24 employees</option>
                   <option value="3">25-49 employees</option>
@@ -158,8 +150,8 @@ class Form extends Component {
               <button className="btn">Send Request</button>
               <ul>
                 <li>Our representatives will contact you within 2 working days</li>
-                <li>Our Analysts & Developers Team prepare the estimation</li>
-                <li>By sending you accept the confidentiality and personal information policies</li>
+                <li>Our analysts & developers team return to you with your project estimation</li>
+                <li>By pressing send, you accept the confidentiality and personal information policies</li>
               </ul>
             </div>
           </form>

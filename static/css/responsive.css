@@ -248,7 +248,7 @@
     flex-direction: column;
   }
 
-  .services-container .container .items .header svg {
+  .services-container .container .items .header img {
     height: 80px;
   }
 
@@ -286,7 +286,7 @@
 
 
 
-  .services-container .container .items .header svg,
+  .services-container .container .items .header img,
   .portfolio-container .container .items .content {
     margin-right: 0;
   }

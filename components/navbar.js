@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import fetch from "isomorphic-unfetch";
 import Link from "next/link";
 
 import Logo from "../components/navbar/logo";
@@ -7,10 +8,14 @@ import Form from "../components/navbar/form";
 class Navbar extends Component {
   state = {
     formStatus: false,
-    menuStatus: false
+    menuStatus: false,
+    menu: []
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const res1 = await fetch(`http://192.168.1.76:8080/api/menu`);
+    const menu = await res1.json();
+    this.setState({ menu: menu.filter(item => item.menuType !== 1 && item.menuType !== 0) });
     if ($(window).width() < 736) {
       $("header").addClass("sticky");
     } else {
@@ -27,7 +32,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { formStatus, menuStatus } = this.state;
+    const { formStatus, menuStatus, menu } = this.state;
     const { router } = this.props;
     return (
       <header>
@@ -40,26 +45,15 @@ class Navbar extends Component {
         <nav className={menuStatus ? `menu-container active` : "menu-container"}>
           <div className="close-menu-btn" onClick={() => this.setState({ menuStatus: false })} />
           <ul>
-            <li className={router.pathname === "/services" ? "active" : ""}>
-              <Link href="/services">
-                <a>Services</a>
-              </Link>
-            </li>
-            <li className={router.pathname === "/portfolio" ? "active" : ""}>
-              <Link href="/portfolio">
-                <a>Portfolio</a>
-              </Link>
-            </li>
-            <li className={router.pathname === "/about" ? "active" : ""}>
-              <Link href="/about">
-                <a>About</a>
-              </Link>
-            </li>
-            <li className={router.pathname === "/contact" ? "active" : ""}>
-              <Link href="/contact">
-                <a>Contact Us</a>
-              </Link>
-            </li>
+            {menu.map(item => {
+              return (
+                <li key={item.id} className={router.pathname === `/${item.title.toLowerCase()}` ? "active" : ""}>
+                  <Link href={item.url}>
+                    <a>{item.title}</a>
+                  </Link>
+                </li>
+              );
+            })}
             <li className="btn" onClick={() => this.setState({ formStatus: !this.state.formStatus })}>
               <a>FREE QUOTE</a>
             </li>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
+import fetch from "isomorphic-unfetch";
 import OwlCarousel from "react-owl-carousel2";
 import { Controller, Scene } from "react-scrollmagic";
 import ReactVivus from "react-vivus";
@@ -37,140 +38,61 @@ const options = {
 };
 
 class Contact extends Component {
+  static async getInitialProps() {
+    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${5}`);
+    const page = await res1.json();
+    const res2 = await fetch(`http://192.168.1.76:8080/api/service`);
+    const services = await res2.json();
+    const res3 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const setting = await res3.json();
+    return { page: page[0], services, setting };
+  }
+
   render() {
-    const { router } = this.props;
+    const { router, page, services, setting } = this.props;
     return (
       <div className="service-page">
-        <Head title={"Techravity - Services"} />
+        <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        <div className="banner-container">
+        <div className="banner-container" style={{ backgroundImage: `url(	http://192.168.1.76:8080${page.coverImage})` }}>
           <div className="content container">
             <ReactWOW animation="fadeIn">
-              <h1>development is our obsession</h1>
-              <p>
-                We create solutions that solve your business pain, respond market needs, <br />
-                transform internal operations and follow the latest digital trends.
-              </p>
+              <h1>{page.slogan}</h1>
+              <p>{page.description}</p>
             </ReactWOW>
           </div>
         </div>
         <div className="introduction-2">
-          <div className="row">
-            <div className="half-width">
-              <ReactWOW animation="fadeIn">
-                <h2>DEDICATED DEVELOPER</h2>
-                <p>
-                  Are you looking for a TECH SPECIALIST at an affordable price? Let us help you with extending your team. We specialize in offering TAILORED analysis and
-                  programming services to your existing IT-team at different sizes and capabilities. Whether you are an early-stage start-up or established IT-department, we're
-                  devoted to help you. Our colleagues are trained in working agile and are ready to onboard at any stage, methodology, language and infrastructure of your request.
-                  We are well-versed in various front and back end technologies, we love to work with HTML5, CSS3, Javascript, .NET, Java, Node.js, React native and also through
-                  the frameworks that our customers have implemented in their companies. Accessing and programming on Oracle or SQL Server databases in most cases.
-                </p>
-                <a href="#">See More</a>
-              </ReactWOW>
-            </div>
-            <Controller>
-              <Scene>
-                <div>
-                  <ReactVivus
-                    id="icon1"
-                    option={{
-                      file: "../static/images/service/icon1.svg",
-                      type: "sync",
-                      duration: 40
-                    }}
-                    style={{ height: "400px", width: "400px" }}
-                  />
+          {services.map((item, index) => {
+            return (
+              <div className="row" key={item.id}>
+                <div className="half-width">
+                  <ReactWOW animation="fadeIn">
+                    <h2>{item.title}</h2>
+                    <p>{item.summery}</p>
+                    <a href="#">See More</a>
+                  </ReactWOW>
                 </div>
-              </Scene>
-            </Controller>
-          </div>
-          <div className="row">
-            <div className="half-width">
-              <ReactWOW animation="fadeIn">
-                <h2>Mobile Development</h2>
-                <p>
-                  Creating MOBILE APPLICATIONS is essential in our digital world. The constant evolution of technologies forces companies to use current tools for enhancing
-                  customer experiences. It is no longer a question of entering lines of code but of imagining the most stable, scalable and efficient applications that meet the
-                  needs of the client. That's why our agency adapts to trends by imagining and designing innovative projects. Our team identifies all stakeholders required to
-                  produce from an application, from functional design to native or hybrid development.
-                </p>
-                <a href="#">See More</a>
-              </ReactWOW>
-            </div>
-            <Controller>
-              <Scene>
-                <div>
-                  <ReactVivus
-                    id="icon2"
-                    option={{
-                      file: "../static/images/service/icon2.svg",
-                      type: "sync",
-                      duration: 40
-                    }}
-                    style={{ height: "400px", width: "400px" }}
-                  />
-                </div>
-              </Scene>
-            </Controller>
-          </div>
-          <div className="row">
-            <div className="half-width">
-              <ReactWOW animation="fadeIn">
-                <h2>Web Development</h2>
-                <p>
-                  By paying ATTENTION TO DETAILS, we carefully commit all our WEB DEVELOPMENT designs to include end-to-end experts from a standard web project to an integrated
-                  omni/multi channel e-commerce experience. We are devoted to help at any stage, from the business thinking to the delivery of a product, by fully meeting the
-                  requirements of the end user. Our specialists offer tailor-made sites to the B2B/B2C e-commerce store building, by offering solutions tailored to meet your
-                  needs.Dedicated Developer
-                </p>
-                <a href="#">See More</a>
-              </ReactWOW>
-            </div>
-            <Controller>
-              <Scene>
-                <div>
-                  <ReactVivus
-                    id="icon3"
-                    option={{
-                      file: "../static/images/service/icon3.svg",
-                      type: "sync",
-                      duration: 40
-                    }}
-                    style={{ height: "400px", width: "500px" }}
-                  />
-                </div>
-              </Scene>
-            </Controller>
-          </div>
-          <div className="row">
-            <div className="half-width">
-              <ReactWOW animation="fadeIn">
-                <h2>Product Design</h2>
-                <p>
-                  We understand PRODUCT DESIGN. Whether for a company, a product or a service, our artistic directors will be delighted to offer you an original visual identity, a
-                  logo, a web or print mockup, a graphic charter. We will turn your project idea into a unique concept, while our UI/UX behavior specialists will take care of the
-                  end-users' experience.
-                </p>
-                <a href="#">See More</a>
-              </ReactWOW>
-            </div>
-            <Controller>
-              <Scene>
-                <div>
-                  <ReactVivus
-                    id="icon4"
-                    option={{
-                      file: "../static/images/service/icon4.svg",
-                      type: "sync",
-                      duration: 40
-                    }}
-                    style={{ height: "400px", width: "400px" }}
-                  />
-                </div>
-              </Scene>
-            </Controller>
-          </div>
+                <Controller>
+                  <Scene>
+                    <div>
+                      {item.icon && (
+                        <ReactVivus
+                          id={`icon${index + 1}`}
+                          option={{
+                            file: `http://192.168.1.76:8080${item.icon}`,
+                            type: "sync",
+                            duration: 40
+                          }}
+                          style={{ height: "400px", width: "400px" }}
+                        />
+                      )}
+                    </div>
+                  </Scene>
+                </Controller>
+              </div>
+            );
+          })}
         </div>
         <div className="slider-container">
           <ReactWOW animation="fadeIn">
@@ -225,7 +147,7 @@ class Contact extends Component {
                   <ul>
                     <li>Don’t need for equipment budget</li>
                     <li>Don’t need a space to place the team</li>
-                    <li>Have your team in no TIME</li>
+                    <li>Have your team in no time</li>
                   </ul>
                 </div>
                 <img src="/static/images/slider/4.svg" />
@@ -233,7 +155,7 @@ class Contact extends Component {
             </OwlCarousel>
           </ReactWOW>
         </div>
-        <Footer router={router} />
+        <Footer router={router} setting={setting} />
         <script src="//cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js" />
         <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" />
         <ScriptLoader />
