@@ -75,7 +75,7 @@ class InnerProject extends Component {
   }
 
   static async getInitialProps() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res1.json();
     return { setting };
   }

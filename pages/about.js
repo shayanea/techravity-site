@@ -50,11 +50,11 @@ class About extends Component {
   }
 
   static async getInitialProps() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${6}`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${6}`);
     const page = await res1.json();
-    const res2 = await fetch(`http://192.168.1.76:8080/api/service`);
+    const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
     const services = await res2.json();
-    const res3 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res3.json();
     return { page: page[0], services, setting };
   }
@@ -65,7 +65,7 @@ class About extends Component {
       <div className="about-page">
         <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        <div className="banner-container" style={{ backgroundImage: `url(	http://192.168.1.76:8080${page.coverImage})` }}>
+        <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <h1>{page.slogan}</h1>
             <p>{page.description}</p>

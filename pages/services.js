@@ -39,11 +39,11 @@ const options = {
 
 class Contact extends Component {
   static async getInitialProps() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${5}`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${5}`);
     const page = await res1.json();
-    const res2 = await fetch(`http://192.168.1.76:8080/api/service`);
+    const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
     const services = await res2.json();
-    const res3 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res3.json();
     return { page: page[0], services, setting };
   }
@@ -54,7 +54,7 @@ class Contact extends Component {
       <div className="service-page">
         <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        <div className="banner-container" style={{ backgroundImage: `url(	http://192.168.1.76:8080${page.coverImage})` }}>
+        <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <ReactWOW animation="fadeIn">
               <h1>{page.slogan}</h1>
@@ -80,7 +80,7 @@ class Contact extends Component {
                         <ReactVivus
                           id={`icon${index + 1}`}
                           option={{
-                            file: `http://192.168.1.76:8080${item.icon}`,
+                            file: `http://185.179.169.129:8081${item.icon}`,
                             type: "sync",
                             duration: 40
                           }}

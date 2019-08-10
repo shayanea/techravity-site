@@ -11,11 +11,11 @@ import ScriptLoader from "../components/scripts";
 
 class Portfolio extends Component {
   static async getInitialProps() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${2}`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${2}`);
     const page = await res1.json();
-    const res2 = await fetch(`http://192.168.1.76:8080/api/project`);
+    const res2 = await fetch(`http://185.179.169.129:8081/api/project`);
     const projects = await res2.json();
-    const res3 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res3.json();
     return { page: page[0], projects, setting };
   }
@@ -26,7 +26,7 @@ class Portfolio extends Component {
       <div className="portfolio-page">
         <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        <div className="banner-container" style={{ backgroundImage: `url(	http://192.168.1.76:8080${page.coverImage})` }}>
+        <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <h1>{page.slogan}</h1>
             <p>{page.description}</p>
@@ -50,7 +50,7 @@ class Portfolio extends Component {
                       {icon.map((el, index) => {
                         return (
                           <ReactWOW key={index} animation="fadeIn" duration="0.5s" delay={index === 0 ? "0" : "0.4s"}>
-                            <img className={icon.length === 2 ? "multiple" : null} src={`http://192.168.1.76:8080${el.file}`} alt={item.title} />
+                            <img className={icon.length === 2 ? "multiple" : null} src={`http://185.179.169.129:8081${el.file}`} alt={item.title} />
                           </ReactWOW>
                         );
                       })}

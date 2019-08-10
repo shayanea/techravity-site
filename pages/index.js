@@ -103,15 +103,15 @@ class Home extends Component {
   }
 
   static async getInitialProps() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${1}`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${1}`);
     const page = await res1.json();
-    const res2 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const res2 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res2.json();
-    const res3 = await fetch(`http://192.168.1.76:8080/api/service`);
+    const res3 = await fetch(`http://185.179.169.129:8081/api/service`);
     const services = await res3.json();
-    const res4 = await fetch(`http://192.168.1.76:8080/api/project`);
+    const res4 = await fetch(`http://185.179.169.129:8081/api/project`);
     const projects = await res4.json();
-    const res5 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${7}`);
+    const res5 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${7}`);
     const contact = await res5.json();
     return { page: page[0], setting, services, projects: projects.slice(0, 3), contact: contact[0] };
   }
@@ -125,7 +125,7 @@ class Home extends Component {
     e.preventDefault();
     this.setState({ hasSubmited: true });
     if (this.state.name.trim() !== "" && this.validateEmail(this.state.email) && this.state.message.trim() !== "") {
-      fetch("http://192.168.1.76:8080/api/contactUs", {
+      fetch("http://185.179.169.129:8081/api/contactUs", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -195,7 +195,7 @@ class Home extends Component {
                 <div key={item.id} className="items">
                   <div>
                     <div className="header">
-                      {item.thumbnail && <img src={`http://192.168.1.76:8080${item.thumbnail}`} alt={item.title} />}
+                      {item.thumbnail && <img src={`http://185.179.169.129:8081${item.thumbnail}`} alt={item.title} />}
                       <h2>{item.title}</h2>
                     </div>
                     <p>{item.slug}</p>
@@ -213,7 +213,7 @@ class Home extends Component {
               return (
                 <a key={item.id} href={`/portfolio/${item.id}`} className="items">
                   <div className="inner-content">
-                    <div className="item-bg" style={{ backgroundImage: `url(http://192.168.1.76:8080${cover[0].file})` }} />
+                    <div className="item-bg" style={{ backgroundImage: `url(http://185.179.169.129:8081${cover[0].file})` }} />
                     <div className="content">
                       <h2>{item.title}</h2>
                       <p>{item.slug}</p>

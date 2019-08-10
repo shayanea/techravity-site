@@ -33,9 +33,9 @@ class Contact extends Component {
   };
 
   static async getInitialProps() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/menu?menuType=${7}`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${7}`);
     const page = await res1.json();
-    const res2 = await fetch(`http://192.168.1.76:8080/api/setting`);
+    const res2 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res2.json();
     return { setting, page: page[0] };
   }
@@ -47,7 +47,7 @@ class Contact extends Component {
       <div className="contact-page">
         <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        <div className="banner-container" style={{ backgroundImage: `url(	http://192.168.1.76:8080${page.coverImage})` }} />
+        <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }} />
         <div className="introduction-1 container">
           <div dangerouslySetInnerHTML={{ __html: `${page.body}` }} />
           <div className="row">

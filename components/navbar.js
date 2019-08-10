@@ -13,7 +13,7 @@ class Navbar extends Component {
   };
 
   async componentDidMount() {
-    const res1 = await fetch(`http://192.168.1.76:8080/api/menu`);
+    const res1 = await fetch(`http://185.179.169.129:8081/api/menu`);
     const menu = await res1.json();
     this.setState({ menu: menu.filter(item => item.menuType !== 1 && item.menuType !== 0) });
     if ($(window).width() < 736) {

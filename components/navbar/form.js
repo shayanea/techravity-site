@@ -30,7 +30,7 @@ class Form extends Component {
       this.state.description.trim() !== "",
       this.state.staff.trim() !== "" && this.validateEmail(this.state.email) && this.validateTel(this.state.tel))
     ) {
-      fetch("http://192.168.1.76:8080/api/freeQuote", {
+      fetch("http://185.179.169.129:8081/api/freeQuote", {
         method: "POST",
         headers: {
           Accept: "application/json",
