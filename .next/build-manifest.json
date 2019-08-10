@@ -19,7 +19,15 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/services": [
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/portfolio": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/project": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

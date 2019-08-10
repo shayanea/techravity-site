@@ -22,6 +22,7 @@ class Portfolio extends Component {
 
   render() {
     const { router, page, projects, setting } = this.props;
+    console.log(projects);
     return (
       <div className="portfolio-page">
         <Head title={`Techravity - ${page.title}`} setting={setting} />
@@ -35,18 +36,17 @@ class Portfolio extends Component {
         <div className="portfolio-container">
           <div className="container">
             {projects.map(item => {
-              let icon = JSON.parse(item.icon);
+              // let icon = JSON.parse(item.icon);
+              console.log(item.icon);
               return (
                 <div key={item.id} className="items">
                   <ReactWOW animation="fadeInUp" duration=".3s">
                     <div className="content">
                       <h2>{item.title}</h2>
                       <p>{item.slug}</p>
-                      {/* <Link href={{ pathname: "project", query: { id: item.id } }}>
-                        <a>See more </a>
-                      </Link> */}
+                      <a href={`project?id=${item.id}`}>See more</a>
                     </div>
-                    <div className="img-holder">
+                    {/* <div className="img-holder">
                       {icon.map((el, index) => {
                         return (
                           <ReactWOW key={index} animation="fadeIn" duration="0.5s" delay={index === 0 ? "0" : "0.4s"}>
@@ -54,7 +54,7 @@ class Portfolio extends Component {
                           </ReactWOW>
                         );
                       })}
-                    </div>
+                    </div> */}
                   </ReactWOW>
                 </div>
               );
