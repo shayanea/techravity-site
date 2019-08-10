@@ -370,7 +370,7 @@ class Home extends Component {
         </div>
         <div className="contact-page">
           <div className="introduction-1 container">
-            <div dangerouslySetInnerHTML={{ __html: `${contact.body}` }} />
+            {/* <div dangerouslySetInnerHTML={{ __html: `${contact.body}` }} /> */}
             <div className="row">
               <div className="content">
                 <p>{setting.description}</p>
