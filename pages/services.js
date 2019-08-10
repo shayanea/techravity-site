@@ -80,7 +80,8 @@ class Contact extends Component {
                         <ReactVivus
                           id={`icon${index + 1}`}
                           option={{
-                            file: `http://185.179.169.129:8081${item.icon}`,
+                            // file: `http://185.179.169.129:8081${item.icon}`,
+                            file: `../static/images/service/icon${index + 1}.svg`,
                             type: "sync",
                             duration: 40
                           }}

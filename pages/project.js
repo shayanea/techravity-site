@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
-import Link from "next/link";
 import OwlCarousel from "react-owl-carousel2";
 
 import Head from "../components/head";
