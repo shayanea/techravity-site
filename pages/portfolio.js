@@ -42,9 +42,9 @@ class Portfolio extends Component {
                     <div className="content">
                       <h2>{item.title}</h2>
                       <p>{item.slug}</p>
-                      <Link href={{ pathname: "project", query: { id: item.id } }}>
+                      {/* <Link href={{ pathname: "project", query: { id: item.id } }}>
                         <a>See more </a>
-                      </Link>
+                      </Link> */}
                     </div>
                     <div className="img-holder">
                       {icon.map((el, index) => {
