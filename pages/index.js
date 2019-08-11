@@ -209,11 +209,12 @@ class Home extends Component {
         <div className="projects-container">
           <div className="container">
             {projects.map(item => {
-              let cover = JSON.parse(item.slideShow);
+              let slideShow = JSON.parse(item.slideShow);
+              const mock = slideShow.filter(item => item.type === 4);
               return (
-                <a key={item.id} href={`/portfolio/${item.id}`} className="items">
+                <a key={item.id} href={`project?id=${item.id}`} className="items">
                   <div className="inner-content">
-                    <div className="item-bg" style={{ backgroundImage: `url(http://185.179.169.129:8081${cover[0].file})` }} />
+                    <div className="item-bg" style={{ backgroundImage: `url(http://185.179.169.129:8081${mock[0].file})` }} />
                     <div className="content">
                       <h2>{item.title}</h2>
                       <p>{item.slug}</p>

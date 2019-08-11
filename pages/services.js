@@ -70,7 +70,7 @@ class Contact extends Component {
                   <ReactWOW animation="fadeIn">
                     <h2>{item.title}</h2>
                     <p>{item.summery}</p>
-                    <a href="#">See More</a>
+                    {/* <a href="#">See More</a> */}
                   </ReactWOW>
                 </div>
                 <Controller>

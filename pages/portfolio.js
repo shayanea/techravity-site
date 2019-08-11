@@ -36,8 +36,8 @@ class Portfolio extends Component {
         <div className="portfolio-container">
           <div className="container">
             {projects.map(item => {
-              // let icon = JSON.parse(item.icon);
-              console.log(item.icon);
+              let slideShow = JSON.parse(item.slideShow);
+              const icon = slideShow.filter(item => item.type === 0);
               return (
                 <div key={item.id} className="items">
                   <ReactWOW animation="fadeInUp" duration=".3s">
@@ -46,7 +46,7 @@ class Portfolio extends Component {
                       <p>{item.slug}</p>
                       <a href={`project?id=${item.id}`}>See more</a>
                     </div>
-                    {/* <div className="img-holder">
+                    <div className="img-holder">
                       {icon.map((el, index) => {
                         return (
                           <ReactWOW key={index} animation="fadeIn" duration="0.5s" delay={index === 0 ? "0" : "0.4s"}>
@@ -54,7 +54,7 @@ class Portfolio extends Component {
                           </ReactWOW>
                         );
                       })}
-                    </div> */}
+                    </div>
                   </ReactWOW>
                 </div>
               );

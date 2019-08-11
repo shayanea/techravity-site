@@ -212,7 +212,7 @@ class InnerProject extends Component {
                 cover = slide.filter(item => item.type === 1),
                 file = mock.length ? `http://185.179.169.129:8081${mock[0].file}` : `http://185.179.169.129:8081${cover[0].file}`;
               return (
-                <a key={item} href={items[item].url} className="items">
+                <a key={item} href={`project?id=${items[item].id}`} className="items">
                   <img src={file} alt={items[item].title} />
                   <div className="content">
                     <h2>{items[item].title}</h2>
