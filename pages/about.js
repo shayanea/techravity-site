@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
 // import fetch from "isomorphic-unfetch";
-// import OwlCarousel from "react-owl-carousel2";
-// import { Controller, Scene } from "react-scrollmagic";
-// import ReactVivus from "react-vivus";
+import OwlCarousel from "react-owl-carousel2";
+import { Controller, Scene } from "react-scrollmagic";
+import ReactVivus from "react-vivus";
 
-// import Head from "../components/head";
+import Head from "../components/head";
 // import Navbar from "../components/navbar";
 // import Footer from "../components/footer";
-// import ScriptLoader from "../components/scripts";
+import ScriptLoader from "../components/scripts";
 
 const options1 = {
   margin: 10,
@@ -63,15 +63,14 @@ class About extends Component {
     // const { router, setting, page } = this.props;
     return (
       <div className="about-page">
-        about
-        {/* <Head title={`Techravity - ${page.title}`} setting={setting} />
-        <Navbar router={router} />
-        <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
+        <Head title={`Techravity - About`} setting={{ description: "test" }} />
+        {/* <Navbar router={router} /> */}
+        {/* <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <h1>{page.slogan}</h1>
             <p>{page.description}</p>
           </div>
-        </div>
+        </div> */}
         <div className="introduction-1 container">
           <div className="img-container">
             <Controller>
@@ -91,7 +90,7 @@ class About extends Component {
               </Scene>
             </Controller>
           </div>
-          <div className="content" dangerouslySetInnerHTML={{ __html: page.body }} />
+          {/* <div className="content" dangerouslySetInnerHTML={{ __html: page.body }} /> */}
         </div>
         <div className="introduction-2">
           <div className="container">
@@ -587,8 +586,8 @@ class About extends Component {
             </a>
           </div>
         </div>
-        <Footer router={router} setting={setting} />
-        <ScriptLoader /> */}
+        {/* <Footer router={router} setting={setting} /> */}
+        <ScriptLoader />
       </div>
     );
   }
