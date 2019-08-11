@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-function GlobarHeader({ title, setting }) {
+function GlobarHeader({ title, setting = { description: "" } }) {
   return (
     <Head>
       <title>{title}</title>
