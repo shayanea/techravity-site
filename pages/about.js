@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
-// import fetch from "isomorphic-unfetch";
+import fetch from "isomorphic-unfetch";
 import OwlCarousel from "react-owl-carousel2";
 import { Controller, Scene } from "react-scrollmagic";
 import ReactVivus from "react-vivus";
@@ -49,15 +49,16 @@ class About extends Component {
     });
   }
 
-  // static async getInitialProps() {
-  //   const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${6}`);
-  //   const page = await res1.json();
-  //   const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
-  //   const services = await res2.json();
-  //   const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
-  //   const setting = await res3.json();
-  //   return { page: page[0], services, setting };
-  // }
+  static async getInitialProps() {
+    // const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${6}`);
+    // const page = await res1.json();
+    // const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
+    // const services = await res2.json();
+    const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
+    const setting = await res3.json();
+    // page: page[0], services,
+    return { setting };
+  }
 
   render() {
     const { router } = this.props;
