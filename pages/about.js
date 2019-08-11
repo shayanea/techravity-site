@@ -6,7 +6,7 @@ import { Controller, Scene } from "react-scrollmagic";
 import ReactVivus from "react-vivus";
 
 import Head from "../components/head";
-// import Navbar from "../components/navbar";
+import Navbar from "../components/navbar";
 // import Footer from "../components/footer";
 import ScriptLoader from "../components/scripts";
 
@@ -60,11 +60,11 @@ class About extends Component {
   // }
 
   render() {
-    // const { router, setting, page } = this.props;
+    const { router } = this.props;
     return (
       <div className="about-page">
         <Head title={`Techravity - About`} setting={{ description: "test" }} />
-        {/* <Navbar router={router} /> */}
+        <Navbar router={router} />
         {/* <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <h1>{page.slogan}</h1>
