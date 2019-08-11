@@ -63,7 +63,7 @@ class About extends Component {
     const { router, setting, page } = this.props;
     return (
       <div className="about-page">
-        <Head title={`Techravity - About us`} setting={setting} />
+        <Head setting={setting} />
         {/* <Navbar router={router} /> */}
         <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">

@@ -3,7 +3,7 @@ import Head from "next/head";
 function GlobarHeader({ title, setting }) {
   return (
     <Head>
-      <title>{title}</title>
+      <title>Techravity</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <meta name="google" value="notranslate" />
