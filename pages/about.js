@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
-import fetch from "isomorphic-unfetch";
-import OwlCarousel from "react-owl-carousel2";
-import { Controller, Scene } from "react-scrollmagic";
-import ReactVivus from "react-vivus";
+// import fetch from "isomorphic-unfetch";
+// import OwlCarousel from "react-owl-carousel2";
+// import { Controller, Scene } from "react-scrollmagic";
+// import ReactVivus from "react-vivus";
 
-import Head from "../components/head";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import ScriptLoader from "../components/scripts";
+// import Head from "../components/head";
+// import Navbar from "../components/navbar";
+// import Footer from "../components/footer";
+// import ScriptLoader from "../components/scripts";
 
 const options1 = {
   margin: 10,
@@ -49,22 +49,23 @@ class About extends Component {
     });
   }
 
-  static async getInitialProps() {
-    const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${6}`);
-    const page = await res1.json();
-    const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
-    const services = await res2.json();
-    const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
-    const setting = await res3.json();
-    return { page: page[0], services, setting };
-  }
+  // static async getInitialProps() {
+  //   const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${6}`);
+  //   const page = await res1.json();
+  //   const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
+  //   const services = await res2.json();
+  //   const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
+  //   const setting = await res3.json();
+  //   return { page: page[0], services, setting };
+  // }
 
   render() {
-    const { router, setting, page } = this.props;
+    // const { router, setting, page } = this.props;
     return (
       <div className="about-page">
-        <Head setting={setting} />
-        {/* <Navbar router={router} /> */}
+        about
+        {/* <Head title={`Techravity - ${page.title}`} setting={setting} />
+        <Navbar router={router} />
         <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <h1>{page.slogan}</h1>
@@ -587,7 +588,7 @@ class About extends Component {
           </div>
         </div>
         <Footer router={router} setting={setting} />
-        <ScriptLoader />
+        <ScriptLoader /> */}
       </div>
     );
   }

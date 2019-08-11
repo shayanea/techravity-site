@@ -72,7 +72,7 @@ function Footer({ router, setting }) {
               <Logo />
             </a>
           </Link>
-          <p>{setting.description}</p>
+          {/* <p>{setting.description}</p> */}
           <p>
             <span>Tel:</span>
             <a href="tel:+46735859836">+46 735 859 836</a>
@@ -95,9 +95,7 @@ function Footer({ router, setting }) {
         </div>
       </div>
       <div className="copyright">
-        <div className="container">
-          <p>{setting.copyRight}</p>
-        </div>
+        <div className="container">{/* <p>{setting.copyRight}</p> */}</div>
       </div>
     </footer>
   );
