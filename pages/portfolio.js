@@ -22,7 +22,6 @@ class Portfolio extends Component {
 
   render() {
     const { router, page, projects, setting } = this.props;
-    console.log(projects);
     return (
       <div className="portfolio-page">
         <Head title={`Techravity - ${page.title}`} setting={setting} />

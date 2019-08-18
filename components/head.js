@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-function GlobarHeader({ title, setting = { description: "" } }) {
+function GlobarHeader({ title }) {
   return (
     <Head>
       <title>{title}</title>
@@ -10,7 +10,10 @@ function GlobarHeader({ title, setting = { description: "" } }) {
       <meta name="referrer" content="no-referrer-when-downgrade" />
       <meta name="HandheldFriendly" content="True" />
       <meta name="MobileOptimized" content="320" />
-      <meta name="description" content={setting.description} />
+      <meta
+        name="description"
+        content="Techravity is a dedicated group of professionals who strive to deliver your tailor-made software solutions based on the best technological practices."
+      />
       <meta name="google-site-verification" content="ondKXwN1V4cD1XRX46GXhnTHzbqTvvl6w59XgyCBmhM" />
       <link rel="apple-touch-icon" sizes="57x57" href="/static/images/favicon/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/static/images/favicon/apple-icon-60x60.png" />

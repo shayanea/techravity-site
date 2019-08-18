@@ -30,6 +30,23 @@ const options = {
   }
 };
 
+const technologies = [
+  { value: 0, text: "ASP.NET core", icon: "../static/images/technology/microsoft.svg" },
+  { value: 1, text: "HTML5", icon: "../static/images/technology/html-5.svg" },
+  { value: 2, text: "CSS3", icon: "../static/images/technology/css3.svg" },
+  { value: 3, text: "Javascript", icon: "../static/images/technology/javascript.svg" },
+  { value: 4, text: "Java", icon: "../static/images/technology/java.svg" },
+  { value: 5, text: "Swift", icon: "../static/images/technology/swift.svg" },
+  { value: 6, text: "MySql", icon: "../static/images/technology/mysql.svg" },
+  { value: 7, text: "Python", icon: "../static/images/technology/python.svg" },
+  { value: 8, text: "Bootstrap", icon: "../static/images/technology/bootstrap.svg" },
+  { value: 9, text: "Angularjs", icon: "../static/images/technology/angular.svg" },
+  { value: 10, text: "JQuery", icon: "../static/images/technology/jquery.svg" },
+  { value: 11, text: "React", icon: "../static/images/technology/react.svg" },
+  { value: 12, text: "Nodejs", icon: "../static/images/technology/nodejs.svg" },
+  { value: 13, text: "MongoDB", icon: "../static/images/technology/mongodb.svg" }
+];
+
 const events = {
   onInitialized: function(event) {
     let stageW = $(".project-thumbnails .owl-carousel").width(),
@@ -67,12 +84,14 @@ class InnerProject extends Component {
   constructor(props) {
     super();
     this.state = {
-      numbers: []
+      numbers: [],
+      technologies: []
     };
   }
 
   componentDidMount() {
     this.randomItem();
+    this.getTechnologiesIcon();
   }
 
   static async getInitialProps({ query }) {
@@ -103,9 +122,36 @@ class InnerProject extends Component {
     }
   };
 
+  getBaseDataValue = type => {
+    let result = this.props.project.projectBaseData.find(item => item.baseDataType === type);
+    return result ? result.name : "";
+  };
+
+  getTechnologiesName = () => {
+    let result = this.props.project.projectBaseData.find(item => item.baseDataType === 2),
+      array = [];
+    result = JSON.parse(result.name);
+    result.forEach(item => {
+      let techName = technologies.find(el => el.value === item);
+      if (techName) array.push(techName.text);
+    });
+    return array.join();
+  };
+
+  getTechnologiesIcon = () => {
+    let result = this.props.project.projectBaseData.find(item => item.baseDataType === 2),
+      array = [];
+    result = JSON.parse(result.name);
+    result.forEach(item => {
+      let techName = technologies.find(el => el.value === item);
+      if (techName) array.push(techName.icon);
+    });
+    return this.setState({ technologies: array });
+  };
+
   render() {
     const { router, setting, project, items } = this.props;
-    const { numbers } = this.state;
+    const { numbers, technologies } = this.state;
     const slideShow = JSON.parse(project.slideShow);
     const cover = slideShow.filter(item => item.type === 1);
     const gallery = slideShow.filter(item => item.type === 2);
@@ -132,18 +178,13 @@ class InnerProject extends Component {
         <div className="technology-container">
           <div className="column" />
           <div className="column">
-            <div className="items">
-              <img src="../../static/images/technology/microsoft.svg" />
-            </div>
-            <div className="items">
-              <img src="../../static/images/technology/html-5.svg" />
-            </div>
-            <div className="items">
-              <img src="../../static/images/technology/css3.svg" />
-            </div>
-            <div className="items">
-              <img src="../../static/images/technology/javascript.svg" />
-            </div>
+            {technologies.map((value, index) => {
+              return (
+                <div key={index} className="items">
+                  <img src={value} />
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="porject-overview-container">
@@ -154,29 +195,29 @@ class InnerProject extends Component {
               <div className="row">
                 <div className="tabs">
                   <span className="header">Project name:</span>
-                  <span className="content">beliive</span>
+                  <span className="content">{project.title}</span>
                 </div>
                 <div className="tabs">
                   <span className="header">Services:</span>
-                  <span className="content">Web application Development, DevOps, UI/UX Design</span>
+                  <span className="content">{this.getBaseDataValue(3)}</span>
                 </div>
                 <div className="tabs">
                   <span className="header">Industry:</span>
-                  <span className="content">Social media</span>
+                  <span className="content">{this.getBaseDataValue(1)}</span>
                 </div>
               </div>
               <div className="row">
                 <div className="tabs">
                   <span className="header">Website:</span>
-                  <span className="content">https://beliive.com/</span>
+                  <span className="content">{project.url}</span>
                 </div>
                 <div className="tabs">
                   <span className="header">Technologies:</span>
-                  <span className="content">ASP.NET core, HTML, CSS, JS</span>
+                  <span className="content">{this.getTechnologiesName()}</span>
                 </div>
                 <div className="tabs">
                   <span className="header">Region:</span>
-                  <span className="content">South America & UK</span>
+                  <span className="content">{this.getBaseDataValue(4)}</span>
                 </div>
               </div>
             </div>

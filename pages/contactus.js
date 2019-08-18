@@ -17,7 +17,7 @@ const MarkerIcon = () => (
           fill="#FD6A02"
         />
       </g>
-    </g>{" "}
+    </g>
   </svg>
 );
 
@@ -45,11 +45,11 @@ class Contact extends Component {
     const mapSetting = { ...this.state.viewport, latitude: Number(setting.latitude), longitude: Number(setting.longitude) };
     return (
       <div className="contact-page">
-        {/* <Head title={`Techravity - ${page.title}`} setting={setting} /> */}
+        <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
         <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }} />
         <div className="introduction-1 container">
-          {/* <div dangerouslySetInnerHTML={{ __html: `${page.body}` }} /> */}
+          <div dangerouslySetInnerHTML={{ __html: `${page.body}` }} />
           <div className="row">
             <div className="content">
               <ReactMapGL

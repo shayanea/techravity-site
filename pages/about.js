@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "next/router";
+import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import OwlCarousel from "react-owl-carousel2";
 import { Controller, Scene } from "react-scrollmagic";
@@ -7,7 +8,7 @@ import ReactVivus from "react-vivus";
 
 import Head from "../components/head";
 import Navbar from "../components/navbar";
-// import Footer from "../components/footer";
+import Footer from "../components/footer";
 import ScriptLoader from "../components/scripts";
 
 const options1 = {
@@ -50,28 +51,32 @@ class About extends Component {
   }
 
   static async getInitialProps() {
-    // const res1 = await fetch(`http://185.179.169.129:8081/api/menu?menuType=${6}`);
-    // const page = await res1.json();
-    // const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
-    // const services = await res2.json();
+    const res1 = await fetch("http://185.179.169.129:8081/api/menu?menuType=6", {
+      headers: {
+        "Accept-Language": "en-us"
+      }
+    });
+    const page = await res1.json();
+    const res2 = await fetch(`http://185.179.169.129:8081/api/service`);
+    const services = await res2.json();
     const res3 = await fetch(`http://185.179.169.129:8081/api/setting`);
     const setting = await res3.json();
-    // page: page[0], services,
-    return { setting };
+    return { setting, page: page[0], services };
   }
 
   render() {
-    const { router } = this.props;
+    const { router, page, services, setting } = this.props;
+    console.log(this.props);
     return (
       <div className="about-page">
-        <Head title={`Techravity - About`} setting={setting} />
+        <Head title={`Techravity - ${page.title}`} setting={setting} />
         <Navbar router={router} />
-        {/* <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
+        <div className="banner-container" style={{ backgroundImage: `url(	http://185.179.169.129:8081${page.coverImage})` }}>
           <div className="content container">
             <h1>{page.slogan}</h1>
             <p>{page.description}</p>
           </div>
-        </div> */}
+        </div>
         <div className="introduction-1 container">
           <div className="img-container">
             <Controller>
@@ -91,7 +96,7 @@ class About extends Component {
               </Scene>
             </Controller>
           </div>
-          {/* <div className="content" dangerouslySetInnerHTML={{ __html: page.body }} /> */}
+          <div className="content" dangerouslySetInnerHTML={{ __html: page.body }} />
         </div>
         <div className="introduction-2">
           <div className="container">
@@ -343,6 +348,30 @@ class About extends Component {
             </div>
             <div className="items sm">
               <div className="content">
+                <h2>Kamer Kemerkaya</h2>
+                <p>CEO of Moralabs</p>
+                <ul className="socials">
+                  <li>
+                    <a className="linkedin" href="https://www.linkedin.com/in/kamerkemerkaya/" target="_blank" />
+                  </li>
+                </ul>
+              </div>
+              <img src="/static/images/about/team/16.jpg" alt="Profile" />
+            </div>
+            <div className="items sm">
+              <div className="content">
+                <h2>Kemal Şen</h2>
+                <p>CTO of Moralabs</p>
+                <ul className="socials">
+                  <li>
+                    <a className="linkedin" href="https://www.linkedin.com/in/kemalsen/" target="_blank" />
+                  </li>
+                </ul>
+              </div>
+              <img src="/static/images/about/team/17.jpg" alt="Profile" />
+            </div>
+            <div className="items sm">
+              <div className="content">
                 <h2>Anna</h2>
                 <p>Marketing Manager</p>
                 <ul className="socials">
@@ -582,12 +611,12 @@ class About extends Component {
               <br /> We are always looking to hire a highly experienced and motivated developer in order to
               <br /> expand our business around the globe. Make sure to contact us!
             </p>
-            <a href="contactus.html" className="btn">
-              Contact us
-            </a>
+            <Link href="/contactus">
+              <a className="btn">Contact us</a>
+            </Link>
           </div>
         </div>
-        {/* <Footer router={router} setting={setting} /> */}
+        <Footer router={router} />
         <ScriptLoader />
       </div>
     );
